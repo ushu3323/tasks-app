@@ -41,7 +41,7 @@ function App() {
   }
 
   return (
-    <div className="container py-4 px-3 mx-auto">
+    <div className="container py-4 px-3 mx-auto d-flex flex-column min-vh-100">
       <h1>Tasks app</h1>
       <form onSubmit={handleSubmit} className="d-flex my-4" autoComplete="off">
         <input
