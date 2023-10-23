@@ -1,11 +1,25 @@
 import { Task } from '../types/task.type';
 
-export default function TasksList({ tasks }: { tasks: Task[] }) {
+interface Props {
+  tasks: Task[];
+  onDelete?: (id: Task['id']) => void;
+}
+
+export default function TasksList({ tasks, onDelete }: Props) {
   return (
     <div className="vstack gap-2">
       {tasks.map(task => (
         <div key={task.id} className="card">
-          <div className="card-body">{task.content}</div>
+          <div className="card-body d-flex">
+            <p className="m-0 me-2 flex-fill d-inline">
+              <span className="align-middle">{task.content}</span>
+            </p>
+            <button
+              className="btn btn-danger align-self-start"
+              onClick={() => onDelete && onDelete(task.id)}>
+              <i className="bi bi-trash-fill"></i>
+            </button>
+          </div>
         </div>
       ))}
     </div>

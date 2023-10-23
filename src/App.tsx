@@ -30,6 +30,10 @@ function App() {
     setTasks(old => [newTask, ...old]);
   }
 
+  function deleteTask(id: Task['id']) {
+    setTasks(old => old.filter(task => task.id !== id));
+  }
+
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     createTask(taskContent);
@@ -56,7 +60,7 @@ function App() {
             Añadir
           </button>
         </form>
-        <TasksList tasks={tasks} />
+        <TasksList tasks={tasks} onDelete={deleteTask} />
       </div>
     </>
   );
