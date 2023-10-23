@@ -1,5 +1,5 @@
 # Tasks-App
 
-Aplicación de lista de tareas realizada con React + Bootstrap
+Tasks list made with React + Bootstrap
 
-Se pueden crear, modificar y eliminar tareas que se almacenan de manera local en el dispositivo(localStorage)
+Create, modify and delete tasks that are stored locally in the device (using local storage API)
