@@ -53,7 +53,7 @@ function App() {
           onChange={e => setTaskContent(e.currentTarget.value)}
         />
         <button type="submit" className="btn btn-primary">
-          Añadir
+          Add
         </button>
       </form>
       <TasksList tasks={tasks} onDelete={deleteTask} />
