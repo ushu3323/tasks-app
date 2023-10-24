@@ -3,15 +3,21 @@ import TaskCard from './TaskCard';
 
 interface Props {
   tasks: Task[];
-  onDelete?: (id: Task['id']) => void;
+  onTaskDelete?: (id: Task['id']) => void;
+  onTaskEdit?: (id: Task['id'], newContent: string) => void;
 }
 
-export default function TasksList({ tasks, onDelete }: Props) {
+export default function TasksList({ tasks, onTaskDelete, onTaskEdit }: Props) {
   return (
     <section id="tasks-list" className="vstack gap-2 flex-fill">
       {tasks.length ? (
         tasks.map(task => (
-          <TaskCard key={task.id} task={task} onDelete={onDelete} />
+          <TaskCard
+            key={task.id}
+            task={task}
+            onDelete={onTaskDelete}
+            onEdit={onTaskEdit}
+          />
         ))
       ) : (
         <div className="flex-fill d-flex flex-column justify-content-center align-items-center">

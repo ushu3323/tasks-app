@@ -30,7 +30,22 @@ function App() {
     setTasks(old => [newTask, ...old]);
   }
 
+  function editTask(id: Task['id'], newContent: string) {
+    setTasks(old =>
+      old.slice(0).map(task => {
+        if (task.id === id) {
+          return {
+            ...task,
+            content: newContent,
+          };
+        }
+        return task;
+      }),
+    );
+  }
+
   function deleteTask(id: Task['id']) {
+    console.log('deleting task.id:', id);
     setTasks(old => old.filter(task => task.id !== id));
   }
 
@@ -56,7 +71,11 @@ function App() {
           Add
         </button>
       </form>
-      <TasksList tasks={tasks} onDelete={deleteTask} />
+      <TasksList
+        tasks={tasks}
+        onTaskDelete={deleteTask}
+        onTaskEdit={editTask}
+      />
     </div>
   );
 }
